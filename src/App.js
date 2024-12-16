@@ -11,6 +11,8 @@ import Checkout from './components/Checkout';
 import Chat from './components/Chat';
 import Footer from './components/Footer';
 
+
+
 const App = () => {
   return (
     <Router>
