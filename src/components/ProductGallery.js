@@ -9,42 +9,42 @@ const ProductGallery = () => {
       id: 1,
       name: 'Elegant Necklace',
       description: 'A stunning necklace for every occasion.',
-      image: '/images/necklace1.jpg',
+      image: '/neck1.jpg',
       link: '/products/necklaces',
     },
     {
       id: 2,
       name: 'Gold Earrings',
       description: 'Elegant gold earrings with a modern touch.',
-      image: '/images/earrings1.jpg',
+      image: '/ear1.jpg',
       link: '/products/earrings',
     },
     {
       id: 3,
       name: 'Silver Bracelet',
       description: 'A timeless silver bracelet.',
-      image: '/images/bracelet1.jpg',
+      image: '/comb1.jpg',
       link: '/products/bracelets',
     },
     {
       id: 4,
       name: 'Diamond Ring',
       description: 'A sparkling diamond ring for special moments.',
-      image: '/images/ring1.jpg',
+      image: '/brace1.jpg',
       link: '/products/rings',
     },
     {
       id: 5,
       name: 'Pearl Necklace',
       description: 'Classic pearl necklace with elegance.',
-      image: '/images/necklace2.jpg',
+      image: '/afgo1.jpg',
       link: '/products/necklaces',
     },
     {
       id: 6,
       name: 'Silver Earrings',
       description: 'Chic silver earrings for everyday wear.',
-      image: '/images/earrings2.jpg',
+      image: 'ank1.jpg',
       link: '/products/earrings',
     },
   ];
@@ -71,7 +71,9 @@ const ProductGallery = () => {
 
   return (
     <div className="product-gallery">
-      <button onClick={handlePrevious} className="nav-button nav-button-left">Previous</button>
+      <button onClick={handlePrevious} className="nav-button nav-button-left">
+        &#8249; {/* Unicode for left arrow */}
+      </button>
       <div className="product-container">
         {displayedProducts.map((product) => (
           <div key={product.id} className="product-item">
@@ -90,7 +92,9 @@ const ProductGallery = () => {
           </div>
         ))}
       </div>
-      <button onClick={handleNext} className="nav-button nav-button-right">Next</button>
+      <button onClick={handleNext} className="nav-button nav-button-right">
+        &#8250; {/* Unicode for right arrow */}
+      </button>
     </div>
   );
 };

@@ -4,27 +4,29 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 100vh;
-    height: 100%;
+    height: 100vh; /* Full viewport height */
     position: relative;
+    background-color: #f9f9f9; /* Optional background color */
   }
   
   .nav-button {
-    background-color: #007bff;
+    background-color: none;
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 32px;
     position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
   }
   
   .nav-button-left {
-    left: 0;
+    left: 20px; /* Adjust for spacing from edge */
   }
   
   .nav-button-right {
-    right: 0;
+    right: 20px; /* Adjust for spacing from edge */
   }
   
   .product-container {
@@ -32,7 +34,9 @@
     justify-content: center;
     flex-grow: 1;
     gap: 20px;
-    align-items: center;
+    padding: 0 60px;
+    height: 100%; /* Match the full height */
+    align-items: center; /* Center products vertically */
   }
   
   .product-item {
