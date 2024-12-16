@@ -1,0 +1,21 @@
+/* SimilarProducts.css */
+.similar-products-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .similar-product-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .similar-product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  

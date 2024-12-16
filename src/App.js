@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import ProductGallery from './components/ProductGallery';
+import SimilarProducts from './components/SimilarProducts';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
@@ -20,6 +21,8 @@ const App = () => {
         <Route path="/cart" component={Cart} />
         <Route path="/checkout" component={Checkout} />
         <Route path="/chat" component={Chat} />
+        <Route path="/" element={<ProductGallery />} />
+        <Route path="/similar-products/:productId" element={<SimilarProducts />} />
       </Routes>
       <ProductGallery />
       <ProductDetail />

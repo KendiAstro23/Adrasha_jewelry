@@ -11,6 +11,12 @@ const ProductGallery = () => {
       description: 'A stunning necklace for every occasion.',
       image: '/neck1.jpg',
       link: '/products/necklaces',
+      similarProducts: [
+        {id: 101, name: 'Silver Necklace', image: '/neck2.jpg', description: 'A classic silver necklace.'},
+        { id: 102, name: 'Gold Pendant Necklace', image: '/neck3.jpg', description: 'A charming gold pendant necklace.'},
+        {id: 103, name: 'Silver Necklace', image: '/neck4.jpg', description: 'A classic silver necklace.'},
+        { id: 104, name: 'Gold Pendant Necklace', image: '/neck5.jpg', description: 'A charming gold pendant necklace.'},
+    ],
     },
     {
       id: 2,
@@ -18,6 +24,12 @@ const ProductGallery = () => {
       description: 'Elegant gold earrings with a modern touch.',
       image: '/ear1.jpg',
       link: '/products/earrings',
+      similarProducts: [
+        {id: 201, name: 'Silver Necklace', image: '/ear2.jpg', description: 'A classic silver necklace.'},
+        { id: 202, name: 'Gold Pendant Necklace', image: '/ear3.jpg', description: 'A charming gold pendant necklace.'},
+        {id: 203, name: 'Silver Necklace', image: '/ear4.jpg', description: 'A classic silver necklace.'},
+        { id: 204, name: 'Gold Pendant Necklace', image: '/ear5.jpg', description: 'A charming gold pendant necklace.'},
+    ],
     },
     {
       id: 3,
@@ -25,6 +37,12 @@ const ProductGallery = () => {
       description: 'A timeless silver bracelet.',
       image: '/comb1.jpg',
       link: '/products/bracelets',
+      similarProducts: [
+        {id: 301, name: 'Silver Necklace', image: '/comb2.jpg', description: 'A classic silver necklace.'},
+        { id: 302, name: 'Gold Pendant Necklace', image: '/comb3.jpg', description: 'A charming gold pendant necklace.'},
+        {id: 303, name: 'Silver Necklace', image: '/comb4.jpg', description: 'A classic silver necklace.'},
+        { id: 304, name: 'Gold Pendant Necklace', image: '/comb5.jpg', description: 'A charming gold pendant necklace.'},
+    ],
     },
     {
       id: 4,
@@ -32,6 +50,12 @@ const ProductGallery = () => {
       description: 'A sparkling diamond ring for special moments.',
       image: '/brace1.jpg',
       link: '/products/rings',
+      similarProducts: [
+        {id: 401, name: 'Silver Necklace', image: '/brace2.jpg', description: 'A classic silver necklace.'},
+        { id: 402, name: 'Gold Pendant Necklace', image: '/brace3.jpg', description: 'A charming gold pendant necklace.'},
+        {id: 403, name: 'Silver Necklace', image: '/brace4.jpg', description: 'A classic silver necklace.'},
+        { id: 404, name: 'Gold Pendant Necklace', image: '/brace5.jpg', description: 'A charming gold pendant necklace.'},
+    ],
     },
     {
       id: 5,
@@ -39,6 +63,12 @@ const ProductGallery = () => {
       description: 'Classic pearl necklace with elegance.',
       image: '/afgo1.jpg',
       link: '/products/necklaces',
+      similarProducts: [
+        {id: 501, name: 'Silver Necklace', image: '/afgo2.jpg', description: 'A classic silver necklace.'},
+        { id: 502, name: 'Gold Pendant Necklace', image: '/afgo3.jpg', description: 'A charming gold pendant necklace.'},
+        {id: 503, name: 'Silver Necklace', image: '/afgo4.jpg', description: 'A classic silver necklace.'},
+        { id: 504, name: 'Gold Pendant Necklace', image: '/afgo5.jpg', description: 'A charming gold pendant necklace.'},
+    ],
     },
     {
       id: 6,
@@ -46,6 +76,12 @@ const ProductGallery = () => {
       description: 'Chic silver earrings for everyday wear.',
       image: 'ank1.jpg',
       link: '/products/earrings',
+      similarProducts: [
+        {id: 601, name: 'Silver Necklace', image: '/ank2.jpg', description: 'A classic silver necklace.'},
+        { id: 602, name: 'Gold Pendant Necklace', image: '/ank3.jpg', description: 'A charming gold pendant necklace.'},
+        {id: 603, name: 'Silver Necklace', image: '/ank4.jpg', description: 'A classic silver necklace.'},
+        { id: 604, name: 'Gold Pendant Necklace', image: '/ank5.jpg', description: 'A charming gold pendant necklace.'},
+    ],
     },
   ];
 
@@ -85,11 +121,12 @@ const ProductGallery = () => {
             <div className="product-details">
               <h2>{product.name}</h2>
               <p>{product.description}</p>
-              <Link to={product.link} className="product-link">
+              <Link to={`/similar-products/${product.id}`}
+              className="product-link">
                 View Similar Products
-              </Link>
+                </Link>
             </div>
-          </div>
+        </div>
         ))}
       </div>
       <button onClick={handleNext} className="nav-button nav-button-right">
