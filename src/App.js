@@ -16,7 +16,6 @@ import Footer from './components/Footer';
 const App = () => {
   return (
     <Router>
-      <Header />
       <Routes>
         <Route path="/" exact component={ProductGallery} />
         <Route path="/product/:id" component={ProductDetail} />
@@ -26,6 +25,7 @@ const App = () => {
         <Route path="/" element={<ProductGallery />} />
         <Route path="/similar-products/:productId" element={<SimilarProducts />} />
       </Routes>
+      <Header />
       <ProductGallery />
       <ProductDetail />
       <Cart />

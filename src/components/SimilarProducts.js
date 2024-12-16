@@ -84,32 +84,32 @@ const SimilarProducts = () => {
       },
   ];
 
-  // Find the product that matches the productId
-  const product = products.find((prod) => prod.id === parseInt(productId));
+   // Find the product that matches the productId
+   const product = products.find((prod) => prod.id === parseInt(productId));
 
-  if (!product) {
-    return <p>Product not found</p>;
-  }
-
-  return (
-    <div>
-      <h1>Similar Products for {product.name}</h1>
-      <div className="similar-products">
-        {product.similarProducts.map((similarProduct) => (
-          <div key={similarProduct.id} className="similar-product-item">
-            <img
-              src={similarProduct.image}
-              alt={similarProduct.name}
-              className="product-image"
-            />
-            <h2>{similarProduct.name}</h2>
-            <p>{similarProduct.description}</p>
-          </div>
-        ))}
-      </div>
-      <Link to="/">Back to Product Gallery</Link>
-    </div>
-  );
-};
-
-export default SimilarProducts;
+   if (!product) {
+     return <p>Product not found</p>;
+   }
+ 
+   return (
+     <div>
+       <h1>Similar Products for {product.name}</h1>
+       <div className="similar-products">
+         {product.similarProducts.map((similarProduct) => (
+           <div key={similarProduct.id} className="similar-product-item">
+             <img
+               src={similarProduct.image}
+               alt={similarProduct.name}
+               className="product-image"
+             />
+             <h2>{similarProduct.name}</h2>
+             <p>{similarProduct.description}</p>
+           </div>
+         ))}
+       </div>
+       <Link to="/">Back to Product Gallery</Link>
+     </div>
+   );
+ };
+ 
+ export default SimilarProducts;

@@ -86,7 +86,6 @@ const ProductGallery = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const itemsPerPage = 3;
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
@@ -108,7 +107,7 @@ const ProductGallery = () => {
   return (
     <div className="product-gallery">
       <button onClick={handlePrevious} className="nav-button nav-button-left">
-        &#8249; {/* Unicode for left arrow */}
+        &#8249;
       </button>
       <div className="product-container">
         {displayedProducts.map((product) => (
@@ -121,16 +120,16 @@ const ProductGallery = () => {
             <div className="product-details">
               <h2>{product.name}</h2>
               <p>{product.description}</p>
-              <Link to={`/similar-products/${product.id}`}
-              className="product-link">
+              {/* Link to the new page for similar products */}
+              <Link to={`/similar-products/${product.id}`} className="product-link">
                 View Similar Products
-                </Link>
+              </Link>
             </div>
-        </div>
+          </div>
         ))}
       </div>
       <button onClick={handleNext} className="nav-button nav-button-right">
-        &#8250; {/* Unicode for right arrow */}
+        &#8250;
       </button>
     </div>
   );
