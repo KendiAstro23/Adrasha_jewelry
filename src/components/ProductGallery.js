@@ -1,30 +1,65 @@
 // src/components/ProductGallery.js
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './ProductGallery.css';
 
 const ProductGallery = () => {
-  const [products, setProducts] = useState([]);
+  const products = [
+    {
+      id: 1,
+      name: 'Elegant Necklace',
+      description: 'A stunning necklace for every occasion.',
+      image: '/images/necklace1.jpg',
+      link: '/products/necklaces',
+    },
+    {
+      id: 2,
+      name: 'Gold Earrings',
+      description: 'Elegant gold earrings with a modern touch.',
+      image: '/images/earrings1.jpg',
+      link: '/products/earrings',
+    },
+    {
+      id: 3,
+      name: 'Silver Bracelet',
+      description: 'A timeless silver bracelet.',
+      image: '/images/bracelet1.jpg',
+      link: '/products/bracelets',
+    },
+  ];
 
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/products') // Adjust URL to your backend
-      .then(response => setProducts(response.data))
-      .catch(error => console.log(error));
-  }, []);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
+  };
+
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? products.length - 1 : prevIndex - 1
+    );
+  };
 
   return (
     <div className="product-gallery">
-      {products.map(product => (
-        <div key={product.id} className="product-card">
-          <img src={product.imageUrl} alt={product.name} />
-          <h3>{product.name}</h3>
-          <p>{product.description}</p>
-          <p>${product.price}</p>
-          <Link to={`/product/${product.id}`}>
-            <button>View Details</button>
+      <div className="product-container">
+        <img
+          src={products[currentIndex].image}
+          alt={products[currentIndex].name}
+          className="product-image"
+        />
+        <div className="product-details">
+          <h2>{products[currentIndex].name}</h2>
+          <p>{products[currentIndex].description}</p>
+          <Link to={products[currentIndex].link} className="product-link">
+            View Similar Products
           </Link>
         </div>
-      ))}
+      </div>
+      <div className="navigation-buttons">
+        <button onClick={handlePrevious} className="nav-button">Previous</button>
+        <button onClick={handleNext} className="nav-button">Next</button>
+      </div>
     </div>
   );
 };

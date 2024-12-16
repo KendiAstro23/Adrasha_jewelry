@@ -21,8 +21,13 @@ const App = () => {
         <Route path="/checkout" component={Checkout} />
         <Route path="/chat" component={Chat} />
       </Routes>
+      <ProductGallery />
+      <ProductDetail />
+      <Cart />
+      <Checkout />
+      <Chat />
       <Footer />
-    </Router>
+      </Router>
   );
 };
 
