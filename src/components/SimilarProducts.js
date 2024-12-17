@@ -84,32 +84,52 @@ const SimilarProducts = () => {
       },
   ];
 
-   // Find the product that matches the productId
-   const product = products.find((prod) => prod.id === parseInt(productId));
+    // Combine all similar products from all products in sequence
+  const allSimilarProducts = products.flatMap((product) => product.similarProducts);
 
-   if (!product) {
-     return <p>Product not found</p>;
-   }
- 
-   return (
-     <div>
-       <h1>Similar Products for {product.name}</h1>
-       <div className="similar-products">
-         {product.similarProducts.map((similarProduct) => (
-           <div key={similarProduct.id} className="similar-product-item">
-             <img
-               src={similarProduct.image}
-               alt={similarProduct.name}
-               className="product-image"
-             />
-             <h2>{similarProduct.name}</h2>
-             <p>{similarProduct.description}</p>
-           </div>
-         ))}
-       </div>
-       <Link to="/">Back to Product Gallery</Link>
-     </div>
-   );
- };
- 
- export default SimilarProducts;
+  // Pagination state
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const itemsPerPage = 2; // Display two items at a time
+
+  // Handle Next and Previous
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex + itemsPerPage < allSimilarProducts.length ? prevIndex + itemsPerPage : 0
+    );
+  };
+
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex - itemsPerPage >= 0 ? prevIndex - itemsPerPage : allSimilarProducts.length - itemsPerPage
+    );
+  };
+
+  // Get the items to display
+  const displayedItems = allSimilarProducts.slice(currentIndex, currentIndex + itemsPerPage);
+
+  return (
+    <div className="similar-products-container">
+      <h1 className="page-title">Similar Products</h1>
+      <div className="similar-products-wrapper">
+        {displayedItems.map((item) => (
+          <div key={item.id} className="similar-product-card">
+            <img src={item.image} alt={item.name} className="product-image" />
+            <h2>{item.name}</h2>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+      <div className="pagination-buttons">
+        <button onClick={handlePrevious} className="nav-button">
+          &#8249; Previous
+        </button>
+        <button onClick={handleNext} className="nav-button">
+          Next &#8250;
+        </button>
+      </div>
+      <Link to="/" className="back-link">Back to Product Gallery</Link>
+    </div>
+  );
+};
+
+export default SimilarProducts;
