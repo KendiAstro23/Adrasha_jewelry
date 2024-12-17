@@ -122,7 +122,7 @@ const ProductGallery = () => {
               <p>{product.description}</p>
               {/* Link to the new page for similar products */}
               <Link to={`/similar-products/${product.id}`} className="product-link">
-                View Similar Products
+              View Similar Products
               </Link>
             </div>
           </div>

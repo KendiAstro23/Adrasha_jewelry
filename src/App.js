@@ -23,7 +23,7 @@ const App = () => {
         <Route path="/checkout" component={Checkout} />
         <Route path="/chat" component={Chat} />
         <Route path="/" element={<ProductGallery />} />
-        <Route path="/similar-products/:productId" element={<SimilarProducts />} />
+        <Route path="/similar-products" element={<SimilarProducts />} />
       </Routes>
       <Header />
       <ProductGallery />

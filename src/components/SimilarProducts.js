@@ -1,8 +1,9 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import './SimilarProducts.css';
 
 const SimilarProducts = () => {
-  const { productId } = useParams(); // Get the productId from the URL
+  const { productId } = useParams(); // Extract productId from the URL
   const products = [
     {
         id: 1,
@@ -84,50 +85,27 @@ const SimilarProducts = () => {
       },
   ];
 
-    // Combine all similar products from all products in sequence
-  const allSimilarProducts = products.flatMap((product) => product.similarProducts);
-
-  // Pagination state
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 2; // Display two items at a time
-
-  // Handle Next and Previous
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex + itemsPerPage < allSimilarProducts.length ? prevIndex + itemsPerPage : 0
-    );
-  };
-
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex - itemsPerPage >= 0 ? prevIndex - itemsPerPage : allSimilarProducts.length - itemsPerPage
-    );
-  };
-
-  // Get the items to display
-  const displayedItems = allSimilarProducts.slice(currentIndex, currentIndex + itemsPerPage);
+   // Find the selected product based on productId
+  const selectedProduct = products.find(
+    (product) => product.id === parseInt(productId)
+  );
 
   return (
-    <div className="similar-products-container">
-      <h1 className="page-title">Similar Products</h1>
-      <div className="similar-products-wrapper">
-        {displayedItems.map((item) => (
-          <div key={item.id} className="similar-product-card">
-            <img src={item.image} alt={item.name} className="product-image" />
-            <h2>{item.name}</h2>
-            <p>{item.description}</p>
-          </div>
-        ))}
-      </div>
-      <div className="pagination-buttons">
-        <button onClick={handlePrevious} className="nav-button">
-          &#8249; Previous
-        </button>
-        <button onClick={handleNext} className="nav-button">
-          Next &#8250;
-        </button>
-      </div>
-      <Link to="/" className="back-link">Back to Product Gallery</Link>
+    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <h1>Similar Products</h1>
+      {selectedProduct ? (
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+          {selectedProduct.similarProducts.map((product) => (
+            <div key={product.id} style={{ width: '45%', margin: '10px', textAlign: 'center' }}>
+              <img src={product.image} alt={product.name} style={{ width: '100%', height: 'auto' }} />
+              <h2>{product.name}</h2>
+              <p>{product.description}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>Product not found</p>
+      )}
     </div>
   );
 };
