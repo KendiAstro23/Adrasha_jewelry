@@ -1,73 +1,44 @@
-.similar-products-container {
+/* src/components/SimilarProductsPage.css */
+.similar-products-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #f8f8f8;
+  background-color: #f9f9f9;
   padding: 20px;
-}
-
-.page-title {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.similar-products-wrapper {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  overflow: hidden;
-}
-
-.similar-product-card {
-  flex: 0 0 45%;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 20px;
-}
-
-.product-image {
-  width: 80%;
-  height: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .nav-button {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
+  font-size: 2rem;
+  background: none;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.nav-button:hover {
-  background-color: #0056b3;
+.similar-products-container {
+  display: flex;
+  overflow-x: auto;
+  flex-grow: 1;
+  justify-content: center;
+  gap: 20px;
+  scroll-behavior: smooth;
 }
 
-.back-link {
-  margin-top: 20px;
-  font-size: 1rem;
-  color: #007bff;
-  text-decoration: none;
+.similar-product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 300px;
 }
 
-.back-link:hover {
-  text-decoration: underline;
+.similar-product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.similar-product-details {
+  margin-top: 10px;
 }
