@@ -124,7 +124,7 @@ const SimilarProductSection = ({ product }) => {
               <img
                 src={similarProduct.image}
                 alt={similarProduct.name}
-                className="product-image"
+                className="product-img"
               />
               <div className="product-details">
                 <h3>{similarProduct.name}</h3>

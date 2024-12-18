@@ -7,7 +7,7 @@
   width: 100%; /* Full width */
   overflow: hidden;
   position: relative; /* Ensures buttons are positioned relative to the gallery */
-  background-color: #f9f9f9; /* Optional background color */
+  background-color: #b4be79; /* Optional background color */
 }
 
 .gallery-title {
@@ -37,9 +37,12 @@
 }
 
 .product-image {
-  width: 80%;
-  height: 60%; /* Adjust the height */
+  width: 90%;
+  height: 70%; /* Adjust the height */
+  max-width: 300px;
   object-fit: cover; /* Ensure the image covers the area */
+  border: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 5px 5px 0 5px; /* Optional rounded corners */
 }
 
