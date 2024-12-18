@@ -1,62 +1,69 @@
-/* ProductGallery.css */
 .product-gallery {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 100vh; /* Full viewport height */
-    position: relative;
-    background-color: #99b5cf; /* Optional background color */
-  }
-  
-  .nav-button {
-    background-color: none;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 32px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); /* Center vertically */
-  }
-  
-  .nav-button-left {
-    left: 20px; /* Adjust for spacing from edge */
-  }
-  
-  .nav-button-right {
-    right: 20px; /* Adjust for spacing from edge */
-  }
-  
-  .product-container {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-    gap: 20px;
-    padding: 0 60px;
-    height: 100%; /* Match the full height */
-    align-items: center; /* Center products vertically */
-  }
-  
-  .product-item {
-    text-align: center;
-    width: 30%;
-  }
-  
-  .product-image {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
-  .product-details h2 {
-    margin: 10px 0;
-    font-size: 18px;
-  }
-  
-  .product-link {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  width: 100%; /* Full width */
+  overflow: hidden;
+  position: relative; /* Ensures buttons are positioned relative to the gallery */
+  background-color: #f9f9f9; /* Optional background color */
+}
+
+.product-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 80%; /* Occupy most of the page */
+  width: 100%; /* Full width */
+}
+
+.product-item {
+  flex: 1;
+  margin: 0 10px; /* Add some spacing between images */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.product-image {
+  width: 100%;
+  height: 80%; /* Adjust the height */
+  object-fit: cover; /* Ensure the image covers the area */
+  border-radius: 8px; /* Optional rounded corners */
+}
+
+.product-details {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #0dd650;
+  color: #1051ca;
+  border: none;
+  padding: 20px 30px;
+  font-size: 40px;
+  cursor: pointer;
+  z-index: 20;
+  border-radius: 50%;
+  opacity: 10; /* Slight transparency for better visibility */
+}
+
+.nav-button-left {
+  left: 20px;
+}
+
+.nav-button-right {
+  right: 20px;
+}
+
+.nav-button:hover {
+  background-color: #11a0d8;
+  opacity: 1; /* Fully opaque on hover */
+}

@@ -86,42 +86,38 @@ const ProductGallery = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 3;
-  const totalPages = Math.ceil(products.length / itemsPerPage);
+  //const itemsPerPage = 3;
 
+  // Calculate the products to display
+  const displayedProducts = [
+    products[currentIndex],
+    products[(currentIndex + 1) % products.length],
+    products[(currentIndex + 2) % products.length],
+  ];
+
+  // Handle "Next" button click
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
   };
 
+  // Handle "Previous" button click
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? totalPages - 1 : prevIndex - 1
-    );
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + products.length) % products.length);
   };
-
-  const displayedProducts = products.slice(
-    currentIndex * itemsPerPage,
-    currentIndex * itemsPerPage + itemsPerPage
-  );
 
   return (
     <div className="product-gallery">
       <button onClick={handlePrevious} className="nav-button nav-button-left">
-        &#8249;
+        &#8249; {/* Left Arrow */}
       </button>
       <div className="product-container">
         {displayedProducts.map((product) => (
           <div key={product.id} className="product-item">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="product-image"
-            />
+            <img src={product.image} alt={product.name} className="product-image" />
             <div className="product-details">
               <h2>{product.name}</h2>
               <p>{product.description}</p>
-               {/* Redirect to Similar Products Page */}
-               <Link to={`/similar-products/${product.id}`} className="product-link">
+              <Link to={`/similar-products/${product.id}`} className="product-link">
                 View Similar Products
               </Link>
             </div>
@@ -129,7 +125,7 @@ const ProductGallery = () => {
         ))}
       </div>
       <button onClick={handleNext} className="nav-button nav-button-right">
-        &#8250;
+        &#8250; {/* Right Arrow */}
       </button>
     </div>
   );
