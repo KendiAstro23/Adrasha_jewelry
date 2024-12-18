@@ -39,7 +39,6 @@
 .product-image {
   width: 90%;
   height: 70%; /* Adjust the height */
-  max-width: 300px;
   object-fit: cover; /* Ensure the image covers the area */
   border: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
