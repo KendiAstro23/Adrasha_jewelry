@@ -1,55 +1,58 @@
-// src/components/SimilarProductsPage.js
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './SimilarProducts.css';
 
 const SimilarProductsPage = ({ products }) => {
   const { productId } = useParams();
-  const allSimilarProducts = products.flatMap((product) => product.similarProducts);
-  
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const product = products.find((p) => p.id === parseInt(productId));
+
+  const [currentSimilarIndex, setCurrentSimilarIndex] = useState(0);
   const itemsPerPage = 2;
+  const similarProducts = product.similarProducts;
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex + itemsPerPage >= allSimilarProducts.length ? 0 : prevIndex + itemsPerPage
+    setCurrentSimilarIndex((prevIndex) =>
+      prevIndex + itemsPerPage >= similarProducts.length ? 0 : prevIndex + itemsPerPage
     );
   };
 
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? allSimilarProducts.length - itemsPerPage : prevIndex - itemsPerPage
+    setCurrentSimilarIndex((prevIndex) =>
+      prevIndex === 0 ? similarProducts.length - itemsPerPage : prevIndex - itemsPerPage
     );
   };
 
-  const displayedProducts = allSimilarProducts.slice(
-    currentIndex,
-    currentIndex + itemsPerPage
+  const displayedSimilarProducts = similarProducts.slice(
+    currentSimilarIndex,
+    currentSimilarIndex + itemsPerPage
   );
 
   return (
     <div className="similar-products-page">
-      <button onClick={handlePrevious} className="nav-button nav-button-left">
-        &#8249;
-      </button>
+      <h2>Similar Products for {product.name}</h2>
       <div className="similar-products-container">
-        {displayedProducts.map((product) => (
-          <div key={product.id} className="similar-product-item">
+        {displayedSimilarProducts.map((similar) => (
+          <div key={similar.id} className="similar-product-item">
             <img
-              src={product.image}
-              alt={product.name}
+              src={similar.image}
+              alt={similar.name}
               className="similar-product-image"
             />
             <div className="similar-product-details">
-              <h3>{product.name}</h3>
-              <p>{product.description}</p>
+              <h3>{similar.name}</h3>
+              <p>{similar.description}</p>
             </div>
           </div>
         ))}
       </div>
-      <button onClick={handleNext} className="nav-button nav-button-right">
-        &#8250;
-      </button>
+      <div className="similar-navigation">
+        <button onClick={handlePrevious} className="nav-button">
+          Previous
+        </button>
+        <button onClick={handleNext} className="nav-button">
+          Next
+        </button>
+      </div>
     </div>
   );
 };

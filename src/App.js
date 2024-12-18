@@ -101,10 +101,13 @@ const products = [
         <Route path="/cart" component={Cart} />
         <Route path="/checkout" component={Checkout} />
         <Route path="/chat" component={Chat} />
+        {/* Product Gallery Route */}
         <Route path="/" element={<ProductGallery />} />
+        
+        {/* Similar Products Route */}
         <Route
           path="/similar-products/:productId"
-          element={<SimilarProducts products={products} />}
+          element={<SimilarProductsPage products={products} />}
         />
       </Routes>
       <Header />

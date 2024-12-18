@@ -120,9 +120,9 @@ const ProductGallery = () => {
             <div className="product-details">
               <h2>{product.name}</h2>
               <p>{product.description}</p>
-              {/* Link to the new page for similar products */}
-              <Link to={`/similar-products/${product.id}`} className="product-link">
-              View Similar Products
+               {/* Redirect to Similar Products Page */}
+               <Link to={`/similar-products/${product.id}`} className="product-link">
+                View Similar Products
               </Link>
             </div>
           </div>
