@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -12,26 +11,22 @@ import Chat from './components/Chat';
 import Footer from './components/Footer';
 
 const App = () => {
-
   return (
     <Router>
-      <Routes>
-        <Route path="/product/:id" component={ProductDetail} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/checkout" component={Checkout} />
-        <Route path="/chat" component={Chat} />
-        <Route path="/" element={<ProductGallery />} />
-        <Route path="/similar-products" element={<SimilarProducts />} />
-      </Routes>
       <Header />
-      <ProductGallery />
-      <SimilarProducts />
-      <ProductDetail />
-      <Cart />
-      <Checkout />
-      <Chat />
+      <div className="main-content">
+        <Routes>
+          {/* Default route for the dashboard */}
+          <Route path="/" element={<ProductGallery />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/similar-products" element={<SimilarProducts />} />
+        </Routes>
+      </div>
       <Footer />
-      </Router>
+    </Router>
   );
 };
 

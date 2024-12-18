@@ -85,6 +85,7 @@ const SimilarProductsPage = () => {
 
   return (
     <div className="similar-products-page">
+      <h1>Similar Products</h1>
       {products.map((product) => (
         <SimilarProductSection key={product.id} product={product} />
       ))}
@@ -97,12 +98,14 @@ const SimilarProductSection = ({ product }) => {
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex < product.similarProducts.length - 2 ? prevIndex + 2 : prevIndex
+      prevIndex + 2 < product.similarProducts.length ? prevIndex + 2 : 0 // Cycle to the start
     );
   };
 
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 2 : 0));
+    setCurrentIndex((prevIndex) =>
+      prevIndex - 2 >= 0 ? prevIndex - 2 : product.similarProducts.length - 2 // Cycle to the end
+    );
   };
 
   const displayedProducts = product.similarProducts.slice(

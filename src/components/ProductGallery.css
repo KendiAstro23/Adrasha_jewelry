@@ -40,7 +40,7 @@
   width: 80%;
   height: 60%; /* Adjust the height */
   object-fit: cover; /* Ensure the image covers the area */
-  border-radius: 8px; /* Optional rounded corners */
+  border-radius: 5px 5px 0 5px; /* Optional rounded corners */
 }
 
 .product-details {
