@@ -122,9 +122,9 @@ const SimilarProductSection = ({ product }) => {
           {displayedProducts.map((similarProduct) => (
             <div key={similarProduct.id} className="product-item">
               <img
-                src={similarProduct.image}
+                src={similarProduct.pic}
                 alt={similarProduct.name}
-                className="product-img"
+                className="product-pic"
               />
               <div className="product-details">
                 <h3>{similarProduct.name}</h3>
