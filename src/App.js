@@ -16,7 +16,6 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" exact component={ProductGallery} />
         <Route path="/product/:id" component={ProductDetail} />
         <Route path="/cart" component={Cart} />
         <Route path="/checkout" component={Checkout} />
@@ -26,6 +25,7 @@ const App = () => {
       </Routes>
       <Header />
       <ProductGallery />
+      <SimilarProducts />
       <ProductDetail />
       <Cart />
       <Checkout />
