@@ -107,6 +107,7 @@ const ProductGallery = () => {
 
   return (
     <div className="product-gallery">
+      <h1 className="gallery-title">Welcome to Our Gallery</h1>
       <button onClick={handlePrevious} className="nav-button nav-button-left">
         &#8249; {/* Left Arrow */}
       </button>
