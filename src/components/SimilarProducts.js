@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SimilarProducts.css';
 
-const SimilarProductsPage = () => {
+const SimilarProducts = () => {
   const products = [
     {
         id: 1,
@@ -108,6 +108,7 @@ const SimilarProductSection = ({ product }) => {
     );
   };
 
+  // Slice the products to display based on currentIndex
   const displayedProducts = product.similarProducts.slice(
     currentIndex,
     currentIndex + 2
@@ -117,26 +118,33 @@ const SimilarProductSection = ({ product }) => {
     <div className="similar-product-section">
       <h2>Similar Products for {product.name}</h2>
       <div className="product-carousel">
-        <button onClick={handlePrevious} className="navi-button">&#8249;</button>
-        <div className="product-container">
+        <button onClick={handlePrevious} className="navi-button navi-button-left">&#8249;</button>
+        <div
+          className="product-cont"
+          style={{
+            transform: `translateX(-${currentIndex * (250 + 20)}px)`, // Adjust to move by 2 products
+            transition: 'transform 0.3s ease-in-out', // Smooth transition
+          }}
+        >
+          {/* Render the displayed products */}
           {displayedProducts.map((similarProduct) => (
-            <div key={similarProduct.id} className="product-item">
+            <div key={similarProduct.id} className="product-form">
               <img
-                src={similarProduct.pic}
+                src={similarProduct.image}
                 alt={similarProduct.name}
                 className="product-pic"
               />
-              <div className="product-details">
+              <div className="product-data">
                 <h3>{similarProduct.name}</h3>
                 <p>{similarProduct.description}</p>
               </div>
             </div>
           ))}
         </div>
-        <button onClick={handleNext} className="navi-button">&#8250;</button>
+        <button onClick={handleNext} className="navi-button navi-button-right">&#8250;</button>
       </div>
     </div>
   );
 };
 
-export default SimilarProductsPage;
+export default SimilarProducts;

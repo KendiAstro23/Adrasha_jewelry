@@ -22,16 +22,16 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px; /* Increased gap for better spacing */
+  gap: 40px; /* Increased gap for better spacing */
   align-items: center;
   height: 80%; /* Occupy most of the page */
   width: 100%; /* Full width */
 }
 
 .product-item {
-  flex: 1 1 350px; /* Ensure items take up more space */
-  max-width: 600px; /* Increase the maximum width */
-  margin: 0 15px; /* Add some spacing between images */
+  flex: 1 1 400px; /* Increased the flex-basis to make items larger */
+  max-width: 300px !important; /* Increased the maximum width for larger containers */
+  margin: 0 20px; /* Add more spacing between images */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,15 +43,15 @@
   width: 100%;
   height: auto; /* Maintain aspect ratio */
   object-fit: cover; /* Ensure the image covers the area */
-  max-width: 800px; /* Increase maximum size */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow for better effect */
-  border-radius: 10px; /* Smooth rounded corners */
-  border: 2px solid #333; /* Optional border for emphasis */
+  max-width: 1000px !important; /* Increased maximum size for larger images */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow for better effect */
+  border-radius: 12px; /* Smooth rounded corners */
+  border: 3px solid #333; /* Optional border for emphasis */
 }
 
 .product-details {
   text-align: center;
-  margin-top: 15px; /* Space between image and text */
+  margin-top: 20px; /* Increased space between image and text */
 }
 
 .nav-button {

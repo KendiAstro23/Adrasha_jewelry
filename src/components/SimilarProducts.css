@@ -1,48 +1,73 @@
 .similar-products-page {
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  text-align: center; /* This will center all text inside this container */
 }
 
-.similar-product-section {
-  margin-bottom: 40px;
+.similar-products-page h1,
+.similar-product-section h2 {
+  text-align: center; /* Ensure headings are centered */
+  margin-bottom: 20px; /* Optional: Add some space below the heading */
 }
 
 .product-carousel {
   display: flex;
+  justify-content: center; /* This will center the product carousel */
   align-items: center;
-  justify-content: center;
+  position: relative; /* This allows positioning the navigation buttons */
+  overflow: hidden; /* Hide overflow when scrolling */
+  width: 100%; /* Ensure full width of the container */
 }
 
-.navi-button {
-  font-size: 24px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.navi-button:hover {
-  background-color: #0056b3;
-}
-
-.product-container {
+.product-cont {
   display: flex;
-  gap: 20px;
-  margin: 0 20px;
+  justify-content: flex-start; /* Align items to the left */
+  gap: 20px; /* Add some space between the products */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for scrolling */
 }
 
-.product-item {
-  text-align: center;
-  max-width: 200px;
+.product-form {
+  text-align: center; /* Center the product text and image */
+  max-width: 250px; /* Ensure each product has a max width */
 }
 
 .product-pic {
-  width: 100%;
+  width: 100%; /* Ensure the image fills the container */
   height: auto;
-  border-radius: 10px;
+  /*margin-bottom: 10px; /* Add some space between image and text */
 }
 
-.product-details {
-  margin-top: 10px;
+.product-data h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.product-data p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.navi-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center the button */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 10; /* Ensure buttons are above the products */
+  display: block; /* Ensure buttons are visible */
+}
+
+.navi-button:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Darker on hover */
+}
+
+.navi-button-left {
+  left: 10px; /* Position the left button on the far left */
+}
+
+.navi-button-right {
+  right: 10px; /* Position the right button on the far right */
 }
