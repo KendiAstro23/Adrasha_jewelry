@@ -1,39 +1,42 @@
 .similar-products-page {
-  text-align: center; /* This will center all text inside this container */
+  text-align: center;
+  background-color: rgb(227, 235, 206);
 }
 
 .similar-products-page h1,
 .similar-product-section h2 {
-  text-align: center; /* Ensure headings are centered */
-  margin-bottom: 20px; /* Optional: Add some space below the heading */
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .product-carousel {
   display: flex;
-  justify-content: center; /* This will center the product carousel */
+  justify-content: center;
   align-items: center;
-  position: relative; /* This allows positioning the navigation buttons */
-  overflow: hidden; /* Hide overflow when scrolling */
-  width: 100%; /* Ensure full width of the container */
+  position: relative;
+  overflow: hidden; /* Hide overflow to prevent images from spilling out */
+  width: 100vw; /* Full viewport width */
+  height: 80vh; /* Adjust height to cover most of the viewport */
 }
 
 .product-cont {
   display: flex;
-  justify-content: flex-start; /* Align items to the left */
-  gap: 20px; /* Add some space between the products */
-  flex-wrap: nowrap; /* Prevent wrapping */
-  transition: transform 0.3s ease-in-out; /* Smooth transition for scrolling */
+  gap: 0;
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
 }
 
 .product-form {
-  text-align: center; /* Center the product text and image */
-  max-width: 250px; /* Ensure each product has a max width */
+  text-align: center;
+  flex-shrink: 0; /* Prevent shrinking of images */
+  width: 50vw; /* Each image will take up half the viewport width */
+  height: 80vh; /* Set height to cover most of the viewport */
 }
 
 .product-pic {
-  width: 100%; /* Ensure the image fills the container */
-  height: auto;
-  /*margin-bottom: 10px; /* Add some space between image and text */
+  width: 80%;
+  height: 70%; /* Ensure the images cover the entire container */
+  object-fit: cover; /* Ensure the images cover the space without distortion */
 }
 
 .product-data h3 {
@@ -49,25 +52,20 @@
 .navi-button {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%); /* Vertically center the button */
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
+  font-size: 2rem;
   padding: 10px;
   cursor: pointer;
-  font-size: 24px;
-  z-index: 10; /* Ensure buttons are above the products */
-  display: block; /* Ensure buttons are visible */
-}
-
-.navi-button:hover {
-  background-color: rgba(0, 0, 0, 0.8); /* Darker on hover */
+  z-index: 1;
 }
 
 .navi-button-left {
-  left: 10px; /* Position the left button on the far left */
+  left: 10px;
 }
 
 .navi-button-right {
-  right: 10px; /* Position the right button on the far right */
+  right: 10px;
 }
