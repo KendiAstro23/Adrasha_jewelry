@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const ProductDetail = () => {
-  const { id } = useParams(); // Get the product ID from the URL
-  const navigate = useNavigate();
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [error, setError] = useState(null);
 
-  // Fetch the product details from the backend API when the component mounts
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/products/${id}`)
-      .then((response) => setProduct(response.data))
-      .catch((error) => console.log(error));
+      .get(`http://localhost:5000/api/products/${id}`) // Backend URL
+      .then((response) => {
+        setProduct(response.data);
+        setError(null); // Clear any previous errors
+      })
+      .catch((error) => {
+        console.error('Error fetching product:', error);
+        setError('Product not found or server error'); // Set error message
+      });
   }, [id]);
 
-  // If the product is still loading, show a loading message
+  if (error) return <div>{error}</div>;
   if (!product) return <div>Loading...</div>;
-
-  // Function to handle adding the product to the cart
-  const handleAddToCart = () => {
-    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    cartItems.push(product);
-    localStorage.setItem('cart', JSON.stringify(cartItems)); // Store cart in local storage
-    alert(`${product.name} added to cart!`);
-  };
 
   return (
     <div className="product-detail">
@@ -33,17 +30,10 @@ const ProductDetail = () => {
         <h2>{product.name}</h2>
         <p>{product.description}</p>
         <p>${product.price}</p>
-        
-        {/* New Information Sections */}
-        <div className="product-additional-info">
-          <h3>Product Details</h3>
-          <p><strong>Made On:</strong> {product.madeOn}</p>
-          <p><strong>Materials:</strong> {product.materials}</p>
-          <p><strong>Best For:</strong> {product.bestFor}</p>
-        </div>
-        
-        <button onClick={handleAddToCart}>Add to Cart</button>
-        <button onClick={() => navigate('/cart')}>View Cart</button>
+        <p>Made On: {product.madeOn}</p>
+        <p>Materials: {product.materials}</p>
+        <p>Best For: {product.bestFor}</p>
+        <button onClick={() => alert(`${product.name} added to cart!`)}>Add to Cart</button>
       </div>
     </div>
   );
