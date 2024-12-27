@@ -18,12 +18,16 @@ const App = () => {
         <Routes>
           {/* Default route for the dashboard */}
           <Route path="/" element={<ProductGallery />} />
+          {/* Route for product details */}
           <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/" element={<SimilarProducts />} />
+          {/* Route for similar products */}
           <Route path="/similar-products/:id" element={<SimilarProducts />} />
+          {/* Route for cart */}
+          <Route path="/cart" element={<Cart />} />
+          {/* Route for checkout */}
+          <Route path="/checkout" element={<Checkout />} />
+          {/* Route for chat */}
+          <Route path="/chat" element={<Chat />} />
         </Routes>
       </div>
       <Footer />
