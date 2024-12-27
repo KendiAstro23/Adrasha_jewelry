@@ -8,6 +8,7 @@ const ProductDetail = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    console.log('Fetching product with ID:', id);
     axios
       .get(`http://localhost:5000/api/products/${id}`) // Backend URL
       .then((response) => {

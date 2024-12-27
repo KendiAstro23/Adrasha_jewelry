@@ -19,7 +19,7 @@ const App = () => {
           {/* Default route for the dashboard */}
           <Route path="/" element={<ProductGallery />} />
           {/* Route for product details */}
-          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
           {/* Route for similar products */}
           <Route path="/similar-products/:id" element={<SimilarProducts />} />
           {/* Route for cart */}
