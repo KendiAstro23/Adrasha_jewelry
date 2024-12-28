@@ -10,7 +10,7 @@ const ProductDetail = () => {
   useEffect(() => {
     console.log('Fetching product with ID:', id);
     axios
-      .get(`http://localhost:5000/api/products/${id}`) // Backend URL
+      .get(`http://localhost:5000/api/products/${id}`)
       .then((response) => {
         setProduct(response.data);
         setError(null); // Clear any previous errors
@@ -26,14 +26,14 @@ const ProductDetail = () => {
 
   return (
     <div className="product-detail">
-      <img src={product.imageUrl} alt={product.name} />
+      <img src={product.imageUrl || '/images/default.jpg'} alt={product.name} />
       <div className="details">
         <h2>{product.name}</h2>
-        <p>{product.description}</p>
+        <p>{product.description || 'No description available'}</p>
         <p>${product.price}</p>
-        <p>Made On: {product.madeOn}</p>
-        <p>Materials: {product.materials}</p>
-        <p>Best For: {product.bestFor}</p>
+        <p>Made On: {product.madeOn || 'N/A'}</p>
+        <p>Materials: {product.materials || 'N/A'}</p>
+        <p>Best For: {product.bestFor || 'N/A'}</p>
         <button onClick={() => alert(`${product.name} added to cart!`)}>Add to Cart</button>
       </div>
     </div>

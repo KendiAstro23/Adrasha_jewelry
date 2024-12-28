@@ -19,24 +19,40 @@ setInterval(() => {
 
 const express = require('express');
 const cors = require('cors');
-
+const path = require('path');
 const app = express();
+
 app.use(cors());
 app.use(express.json());
+app.use('/images', express.static(path.join(__dirname, 'images')));  // Serve images
 
 const products = [
-  {id: 101, name: 'Silver Necklace', imageUrl: 'neck2.jpg', price: 200, description: 'A classic silver necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
-  { id: 102, name: 'Gold Pendant Necklace', imageUrl: 'neck3.jpg', price: 200, description: 'A charming gold pendant necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
-  {id: 103, name: 'Silver Necklace', imageUrl: 'neck4.jpg', price: 200, description: 'A classic silver necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
-  { id: 104, name: 'Gold Pendant Necklace', imageUrl: '/neck5.jpg', price: 200, description: 'A charming gold pendant necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
-  {id: 201, name: 'Silver Necklace', imageUrl: '/ear2.jpg', price: 200, description: 'A classic silver necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
-  { id: 202, name: 'Gold Pendant Necklace', imageUrl: '/ear3.jpg', price: 200, description: 'A charming gold pendant necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
-  {id: 203, name: 'Silver Necklace', imageUrl: '/ear4.jpg', price: 200, description: 'A classic silver necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
-  { id: 204, name: 'Gold Pendant Necklace', imageUrl: '/ear5.jpg', price: 200, description: 'A charming gold pendant necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
-  { id: '301', name: 'Gold Necklace', imageUrl: 'comb2.jpg', price: 200, description: 'Beautiful gold necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings' },
-  { id: '302', name: 'Silver Bracelet', imageUrl: 'comb3.jpg', price: 100, description: 'Elegant silver bracelet.', madeOn: '2023-02-01', materials: 'Silver', bestFor: 'Parties' },
-  {id: 303, name: 'Silver Necklace', imageUrl: '/comb4.jpg', price: 200, description: 'A classic silver necklace.'},
-  { id: 304, name: 'Gold Pendant Necklace', imageUrl: '/comb5.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  {id: 101, name: 'Silver Necklace', imageUrl: '/images/neck2.jpg', price: 200, description: 'A classic silver necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
+  { id: 102, name: 'Gold Pendant Necklace', imageUrl: '/images/neck3.jpg', price: 200, description: 'A charming gold pendant necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
+  {id: 103, name: 'Silver Necklace', imageUrl: '/images/neck4.jpg', price: 200, description: 'A classic silver necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
+  { id: 104, name: 'Gold Pendant Necklace', imageUrl: '/images/neck5.jpg', price: 200, description: 'A charming gold pendant necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
+  {id: 201, name: 'Silver Necklace', imageUrl: '/images/ear2.jpg', price: 200, description: 'A classic silver necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
+  { id: 202, name: 'Gold Pendant Necklace', imageUrl: '/images/ear3.jpg', price: 200, description: 'A charming gold pendant necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
+  {id: 203, name: 'Silver Necklace', imageUrl: '/images/ear4.jpg', price: 200, description: 'A classic silver necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
+  { id: 204, name: 'Gold Pendant Necklace', imageUrl: '/images/ear5.jpg', price: 200, description: 'A charming gold pendant necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings'},
+  { id: '301', name: 'Gold Necklace', imageUrl: '/images/comb2.jpg', price: 200, description: 'Beautiful gold necklace.', madeOn: '2023-01-01', materials: 'Gold', bestFor: 'Weddings' },
+  { id: '302', name: 'Silver Bracelet', imageUrl: '/images/comb3.jpg', price: 100, description: 'Elegant silver bracelet.', madeOn: '2023-02-01', materials: 'Silver', bestFor: 'Parties' },
+  {id: 303, name: 'Silver Necklace', imageUrl: '/images/comb4.jpg', price: 200, description: 'A classic silver necklace.'},
+  { id: 304, name: 'Gold Pendant Necklace', imageUrl: '/images/comb5.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 401, name: 'Gold Pendant Necklace', imageUrl: '/images/brace1.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 402, name: 'Gold Pendant Necklace', imageUrl: '/images/brace2.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 403, name: 'Gold Pendant Necklace', imageUrl: '/images/brace3.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 404, name: 'Gold Pendant Necklace', imageUrl: '/images/brace4.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 405, name: 'Gold Pendant Necklace', imageUrl: '/images/brace5.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 501, name: 'Gold Pendant Necklace', imageUrl: '/images/comb5.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 502, name: 'Gold Pendant Necklace', imageUrl: '/images/comb5.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 503, name: 'Gold Pendant Necklace', imageUrl: '/images/comb5.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 504, name: 'Gold Pendant Necklace', imageUrl: '/images/comb5.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 304, name: 'Gold Pendant Necklace', imageUrl: '/images/comb5.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 304, name: 'Gold Pendant Necklace', imageUrl: '/images/comb5.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 304, name: 'Gold Pendant Necklace', imageUrl: '/images/comb5.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 304, name: 'Gold Pendant Necklace', imageUrl: '/images/comb5.jpg', price: 200, description: 'A charming gold pendant necklace.', },
+  { id: 304, name: 'Gold Pendant Necklace', imageUrl: '/images/comb5.jpg', price: 200, description: 'A charming gold pendant necklace.', },
 ];
 // Add a root route
 app.get('/', (req, res) => {
