@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import './ProductDetail.css';
+import { CartContext } from '../components/CartContext'; // Ensure the path is correct
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
+  const { addToCart } = useContext(CartContext); // Access addToCart from CartContext
 
   useEffect(() => {
     console.log('Fetching product with ID:', id);
