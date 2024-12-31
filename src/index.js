@@ -7,24 +7,17 @@ import reportWebVitals from './reportWebVitals';
 
 import { CartProvider } from './components/CartContext';
 
-ReactDOM.render(
-  <CartProvider>
-    <App />
-  </CartProvider>,
-  document.getElementById('root')
-);
-
+// Use ReactDOM.createRoot to render the app
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </BrowserRouter>
   </React.StrictMode>
-);
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
