@@ -26,7 +26,7 @@ const ProductDetail = () => {
 
   return (
     <div className="product-detail">
-      <img src={product.imageUrl || '/images/default.jpg'} alt={product.name} />
+      <img src={`http://localhost:5000${product.imageUrl}`} alt={product.name} />
       <div className="details">
         <h2>{product.name}</h2>
         <p>{product.description || 'No description available'}</p>
