@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { CartContext } from './CartContext';
+import { useNavigate } from 'react-router-dom';
+import './Cart.css';
 
 const Cart = () => {
-  const location = useLocation();
+  const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
   const navigate = useNavigate();
-  const [cart, setCart] = useState(location.state?.cart || []);
-  const [total, setTotal] = useState(0);
 
-  useEffect(() => {
-    setTotal(cart.reduce((total, item) => total + item.price * item.quantity, 0));
-  }, [cart]);
-
-  const handleRemoveItem = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
-  };
-
-  const handleUpdateQuantity = (id, quantity) => {
-    setCart(cart.map((item) => item.id === id ? { ...item, quantity } : item));
-  };
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <div className="cart-page">
@@ -33,11 +23,13 @@ const Cart = () => {
                 <h3>{item.name}</h3>
                 <p>${item.price}</p>
                 <p>Quantity: {item.quantity}</p>
-                <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
+                <button onClick={() => removeFromCart(item.id)}>Remove</button>
                 <input
                   type="number"
                   value={item.quantity}
-                  onChange={(e) => handleUpdateQuantity(item.id, parseInt(e.target.value))}
+                  onChange={(e) =>
+                    updateQuantity(item.id, parseInt(e.target.value) || 1)
+                  }
                 />
               </div>
             </div>
@@ -45,10 +37,12 @@ const Cart = () => {
           <div className="cart-total">
             <h3>Total: ${total.toFixed(2)}</h3>
           </div>
+          <div className="cart-actions">
+            <button onClick={() => navigate('/')}>Continue Shopping</button>
+            <button onClick={() => navigate('/checkout')}>Checkout</button>
+          </div>
         </div>
       )}
-      <button onClick={() => navigate('/')}>Continue Shopping</button>
-      <button onClick={() => navigate('/checkout')}>Checkout</button>
     </div>
   );
 };

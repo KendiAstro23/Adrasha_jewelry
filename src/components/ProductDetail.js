@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import './ProductDetail.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -26,7 +27,7 @@ const ProductDetail = () => {
 
   return (
     <div className="product-detail">
-      <img src={`http://localhost:5000${product.imageUrl}`} alt={product.name} />
+      <img src={product.imageUrl || '/images/default.jpg'} alt={product.name} />
       <div className="details">
         <h2>{product.name}</h2>
         <p>{product.description || 'No description available'}</p>
@@ -34,7 +35,7 @@ const ProductDetail = () => {
         <p>Made On: {product.madeOn || 'N/A'}</p>
         <p>Materials: {product.materials || 'N/A'}</p>
         <p>Best For: {product.bestFor || 'N/A'}</p>
-        <button onClick={() => alert(`${product.name} added to cart!`)}>Add to Cart</button>
+        <button onClick={() => addToCart(product)}>Add to Cart</button>
       </div>
     </div>
   );
