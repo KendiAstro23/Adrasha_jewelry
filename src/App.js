@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom'; // No need for BrowserRouter here
 import Header from './components/Header';
 import ProductGallery from './components/ProductGallery';
 import SimilarProducts from './components/SimilarProducts';
@@ -12,7 +12,7 @@ import Footer from './components/Footer';
 
 const App = () => {
   return (
-    <Router>
+    <>
       <Header />
       <div className="main-content">
         <Routes>
@@ -31,7 +31,7 @@ const App = () => {
         </Routes>
       </div>
       <Footer />
-    </Router>
+    </>
   );
 };
 

@@ -5,7 +5,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { CartProvider } from './components/CartContext';
+import CartProvider from './components/CartContext'; // Use default import
+
 
 // Use ReactDOM.createRoot to render the app
 const root = ReactDOM.createRoot(document.getElementById('root'));
