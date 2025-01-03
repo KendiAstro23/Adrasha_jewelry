@@ -17,6 +17,7 @@ setInterval(() => {
 }, 10000); // Log memory usage every 10 seconds
 
 
+const functions = require('firebase-functions');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
