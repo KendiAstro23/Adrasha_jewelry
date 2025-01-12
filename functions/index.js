@@ -7,9 +7,6 @@ process.on("uncaughtException", (err, origin) => {
   process.exit(1); // Exit the process with failure code
 });
 
-const heapdump = require("heapdump");
-heapdump.writeSnapshot(`./${Date.now()}.heapsnapshot`);
-
 if (process.env.NODE_ENV !== "production") {
   setInterval(() => {
     const memoryUsage = process.memoryUsage();
@@ -98,5 +95,10 @@ app.get("/api/products/:id", (req, res) => {
     res.status(404).send("Product not found");
   }
 });
+
+// Add a log to indicate which port the app is running on
+const PORT = process.env.PORT || 8080;
+console.log(`App is configured to listen on port ${PORT}`);
+
 // Export the app as a Firebase Cloud Function
 exports.api = functions.https.onRequest(app);
