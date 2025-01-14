@@ -67,6 +67,6 @@ app.get('/api/products/:id', (req, res) => {
     res.status(404).send('Product not found');
   }
 });
-
+z
 
 exports.api = functions.https.onRequest(app);
