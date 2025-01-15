@@ -1,21 +1,30 @@
 module.exports = {
     env: {
-      browser: true,
-      es2021: true,
-      node: true, // Add this line to support Node.js globals
+      browser: true, // For browser-specific globals
+      es2021: true, // For modern ECMAScript features
+      node: true, // Enables Node.js-specific globals
     },
     extends: [
-      "eslint:recommended",
-      "plugin:react/recommended",
+      'eslint:recommended',
+      'plugin:react/recommended',
     ],
     parserOptions: {
-      ecmaVersion: 12,
-      sourceType: "module",
+      ecmaFeatures: {
+        jsx: true,
+      },
+      ecmaVersion: 12, // For ES2021 features
+      sourceType: 'module', // Use ES modules
     },
-    plugins: ["react"],
+    plugins: [
+      'react',
+    ],
+    settings: {
+      react: {
+        version: 'detect', // Automatically detect React version
+      },
+    },
     rules: {
-      "no-unused-vars": "warn", // Change to warn to avoid blocking deployment
-      "no-undef": "off", // Disable no-undef for Node.js globals like `process`
+      // Custom rules, if needed
     },
   };
   
